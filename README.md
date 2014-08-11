@@ -46,6 +46,13 @@ Attribute    | Options    | Default  | Description
 
 > See Paper.js [official documentation](http://paperjs.org/reference/).
 
+## Access Paper.js API
+
+```javascript
+	var myCanvas = document.querySelector('myCanvas');
+	myCanvas.paper.[...]
+```
+
 ## Development
 
 In order to run it locally you'll need to fetch some dependencies and a basic server setup.
@@ -86,12 +93,15 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+5. Submit a pull request @.@
 
+<!--
 ## History
 
 For detailed changelog, check [Releases](https://github.com/octavioturra/paper-canvas/releases).
+-->
 
 ## License
 
-[MIT License](http://octavioturra.mit-license.org/) © Octavio Turra
+[MIT License](http://octavioturra.mit-license.org/) © Octavio Turra.
+Documentation style and package structure based in [voice-elements](http://zenorocha.github.com/voice-elements) from [Zeno Rocha](http://twitter.com/zenorocha).
