@@ -1,0 +1,6 @@
+[submodule "lib/polymer"]
+	path = lib/polymer
+	url = https://github.com/Polymer/polymer.git
+[submodule "src/lib/paper.js"]
+	path = src/lib/paper.js
+	url = https://github.com/paperjs/paper.js.git
