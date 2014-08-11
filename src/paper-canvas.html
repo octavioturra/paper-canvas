@@ -1,0 +1,69 @@
+<!-- Import Polymer -->
+<script src="../bower_components/polymer/polymer.js"></script>
+
+<!-- Define your custom element -->
+<polymer-element name="paper-canvas" attributes="width height background">
+	<template>
+		<canvas id="canvas"></canvas>
+		<style>
+			:host(.shadow){
+				box-shadow: 2px 2px 5px #ccc;
+			}
+			:host{
+				width: {{width}}!Important;
+				height: {{height}}!Important;
+				padding: 0;				
+				display: inline-block;
+			}
+			canvas{
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</template>
+	<script src="../bower_components/paper/dist/paper-full.min.js"></script>
+	<script>
+		Polymer('paper-canvas', {
+		
+			/* -- Attributes ------------------------------------------------ */
+			width : '800px',
+			height : '600px',
+			background : '#FFF',
+			observe : {
+				//background: 'redraw'
+			},
+			/* -- Lifecycle ------------------------------------------------- */
+			ready : function(){
+				this.paper = new paper.PaperScope();				
+				this.canvas = this.$.canvas;	
+			},
+			attached : function(){
+				this.paper.setup(this.canvas);
+				this.redraw();
+			},
+			/* -- Methods --------------------------------------------------- */
+			redraw : function(){
+					var background = new this.paper.Path.Rectangle(this.paper.view.bounds);
+					background.fillColor = this.background;
+					this.paper.view.draw();
+					var self = this;
+					setTimeout(function(){
+						self.fire('redraw', {background: self.background});			
+					}, 0);
+			},
+			clear : function(){
+				this.paper.project.activeLayer.removeChildren();
+				this.redraw();
+				this.fire('clear');
+			},
+			getDataURL : function(mime){				
+				return this.$.canvas.toDataURL(mime||"image/png");
+			},
+			draw : function(){
+				this.paper.view.draw();
+				this.fire('drawn');
+			}
+		});
+	</script>
+</polymer-element>
