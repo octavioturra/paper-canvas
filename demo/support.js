@@ -1,8 +1,7 @@
 (function (window, undefined) {
-    var SpeechRecognition = window.webkitSpeechRecognition;
-    var SpeechSynthesis = window.speechSynthesis;
+    var Canvas = window.canvas;
 
-    if (!SpeechRecognition || !SpeechSynthesis) {
+    if (!Canvas) {
         var supportWarning = document.getElementsByClassName('brower-support');
         supportWarning[0].style.display = 'block';
     }
