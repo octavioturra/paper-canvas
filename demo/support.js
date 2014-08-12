@@ -1,5 +1,5 @@
 (function (window, undefined) {
-    var Canvas = window.canvas;
+    var Canvas = !!document.createElement("canvas").getContext;
 
     if (!Canvas) {
         var supportWarning = document.getElementsByClassName('brower-support');
