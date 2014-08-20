@@ -1,5 +1,5 @@
 <!-- Import Polymer -->
-<script src="../../polymer/polymer.js"></script>
+<link rel="import" href="../../polymer/polymer.html">
 
 <!-- Define your custom element -->
 <polymer-element name="paper-canvas" attributes="width height background">
@@ -29,7 +29,7 @@
 			/* -- Attributes ------------------------------------------------ */
 			width : '800px',
 			height : '600px',
-			background : '#FFF',
+			background : 'transparent',
 			observe : {
 				//background: 'redraw'
 			},
@@ -44,8 +44,10 @@
 			},
 			/* -- Methods --------------------------------------------------- */
 			redraw : function(){
-					var background = new this.paper.Path.Rectangle(this.paper.view.bounds);
-					background.fillColor = this.background;
+					if(this.background != "transparent"){
+						var background = new this.paper.Path.Rectangle(this.paper.view.bounds);
+						background.fillColor = this.background;
+					}
 					this.paper.view.draw();
 					var self = this;
 					setTimeout(function(){
